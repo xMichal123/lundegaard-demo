@@ -1,6 +1,7 @@
 package sk.enlightening.my3dsite.web
 
 import jakarta.validation.Valid
+import org.bson.types.ObjectId
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -36,7 +37,7 @@ internal class UserCvRecordController(userCvRecordRepository: UserCvRecordReposi
     }
 
     @GetMapping("/record/{id}")
-    fun getRecord(@PathVariable id: Long?): ResponseEntity<*> {
+    fun getRecord(@PathVariable id: ObjectId?): ResponseEntity<*> {
         val groupNullable: Optional<UserCvRecord?> = userCvRecordRepository.findById(id!!)
         val group: Optional<UserCvRecord> = groupNullable.map { it }
         return group.map<ResponseEntity<Any>>(Function<UserCvRecord, ResponseEntity<Any>> { response: UserCvRecord ->
@@ -85,7 +86,7 @@ internal class UserCvRecordController(userCvRecordRepository: UserCvRecordReposi
     }
 
     @DeleteMapping("/record/{id}")
-    fun deleteRecord(@PathVariable id: Long?): ResponseEntity<*> {
+    fun deleteRecord(@PathVariable id: ObjectId?): ResponseEntity<*> {
         log.info("Request to delete record: {}", id)
         userCvRecordRepository.deleteById(id!!)
         return ResponseEntity.ok().build<Any>()
