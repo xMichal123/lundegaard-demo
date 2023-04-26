@@ -7,5 +7,5 @@ import sk.enlightening.my3dsite.model.UserCvRecord
 
 @Qualifier
 interface UserCvRecordRepository : MongoRepository<UserCvRecord?, ObjectId?> {
-    fun findAllByUserId(id: String?): List<UserCvRecord?>?
+    fun findAllByOktaUserId(oktaUserId: String?): List<UserCvRecord?>?
 }

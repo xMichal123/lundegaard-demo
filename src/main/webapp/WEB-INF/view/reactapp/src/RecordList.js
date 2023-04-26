@@ -42,24 +42,18 @@ const RecordList = () => {
 
   const RecordList = Array.isArray(records)
                              ? records.map(record => {
-    //const address = `${record.address || ''} ${record.city || ''} ${record.stateOrProvince || ''}`;
-    return <tr key={record.id}>
+    return (<tr key={record.id}>
       <td style={{whiteSpace: 'nowrap'}}>{record.projectName}</td>
-      <td>{record.from}</td>
-      <td>{record.events.map(event => {
-        return <div key={event.id}>{new Intl.DateTimeFormat('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: '2-digit'
-        }).format(new Date(event.date))}: {event.title}</div>
-      })}</td>
+      <td>{format(record.from, 'mm/yyyy')} - {format(record.to, 'mm/yyyy')}</td>
+      <td>{record.employer}</td>
+      <td>{record.projectDescription}</td>
       <td>
         <ButtonGroup>
           <Button size="sm" color="primary" tag={Link} to={"/records/" + record.id}>Edit</Button>
           <Button size="sm" color="danger" onClick={() => remove(record.id)}>Delete</Button>
         </ButtonGroup>
       </td>
-    </tr>
+    </tr>)
   }) : null;
 
   return (
@@ -69,13 +63,14 @@ const RecordList = () => {
         <div className="float-end">
           <Button color="success" tag={Link} to="/records/new">Add Record</Button>
         </div>
-        <h3>My JUG Tour</h3>
+        <h3>My Records</h3>
         <Table className="mt-4">
           <thead>
           <tr>
-            <th width="20%">Name</th>
-            <th width="20%">From</th>
-            <th>Events</th>
+            <th width="20%">Project Name</th>
+            <th width="20%">Range</th>
+            <th width="20%">Employer</th>
+            <th width="30%">Description</th>
             <th width="10%">Actions</th>
           </tr>
           </thead>

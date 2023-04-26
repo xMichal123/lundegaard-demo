@@ -32,8 +32,10 @@ internal class UserCvRecordController(userCvRecordRepository: UserCvRecordReposi
     }
 
     @GetMapping("/records")
-    fun records(principal: Principal): List<UserCvRecord?>? {
-        return userCvRecordRepository.findAllByUserId(principal.name)
+    fun records(@AuthenticationPrincipal principal: OAuth2User): List<UserCvRecord?>? {
+        val details = principal.attributes
+        val userId = details["sub"].toString()
+        return userCvRecordRepository.findAllByOktaUserId(userId)
     }
 
     @GetMapping("/record/{id}")
@@ -57,16 +59,10 @@ internal class UserCvRecordController(userCvRecordRepository: UserCvRecordReposi
         val userId = details["sub"].toString()
 
         // check to see if user already exists
-        val userNullable: Optional<User?> = userRepository.findById(userId)
-        val user: Optional<User> = userNullable.map { it }
+        //val userNullable: Optional<User?> = userRepository.findById(userId)
+        //val user: Optional<User> = userNullable.map { it }
         if (userCvRecord != null) {
-            userCvRecord.user =
-                user.orElse(
-                    User(
-                        userId,
-                        details["name"].toString(), details["email"].toString()
-                    )
-                )
+            userCvRecord.oktaUserId = userId
         }
         val result: UserCvRecord? = userCvRecordRepository.save(userCvRecord!!)
         if (result != null) {

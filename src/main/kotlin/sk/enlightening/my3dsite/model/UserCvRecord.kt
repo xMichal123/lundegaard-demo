@@ -8,26 +8,24 @@ import java.time.YearMonth
 import java.util.*
 
 @Document
-class UserCvRecord (
+data class UserCvRecord (
     @Id
-    val id: ObjectId? = null,
+    var id: ObjectId? = null,
 
     @Column(name = "date_from", columnDefinition = "date")
     //@Convert(converter = YearMonthDateAttributeConverter::class)
-    private val from: Date? = null,
+    val from: Date? = null,
 
     @Column(name = "date_to", columnDefinition = "date")
     //@Convert(converter = YearMonthDateAttributeConverter::class)
-    private val to: Date? = null,
-    private val employer: String? = null,
-    private val customer: String? = null,
-    private val projectName: String? = null,
-    private val projectDescription: String? = null,
-    private val technologies: String? = null,
-    private val role: String? = null,
-
-    @ManyToOne(cascade = [CascadeType.PERSIST]) var user: User? = null
-
+    val to: Date? = null,
+    val employer: String? = null,
+    val customer: String? = null,
+    val projectName: String? = null,
+    val projectDescription: String? = null,
+    val technologies: String? = null,
+    val role: String? = null,
+    var oktaUserId: String? = null
 ) {
     constructor() : this(null, null, null, null, null, null, null, null, null)
 }
