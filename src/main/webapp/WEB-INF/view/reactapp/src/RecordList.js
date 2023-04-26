@@ -3,6 +3,7 @@ import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { format } from 'date-fns';
 
 const RecordList = () => {
 
@@ -44,7 +45,7 @@ const RecordList = () => {
                              ? records.map(record => {
     return (<tr key={record.id}>
       <td style={{whiteSpace: 'nowrap'}}>{record.projectName}</td>
-      <td>{format(record.from, 'mm/yyyy')} - {format(record.to, 'mm/yyyy')}</td>
+      {/*<td>{format(record.from, 'mm/yyyy')} - {format(record.to, 'mm/yyyy')}</td>*/}
       <td>{record.employer}</td>
       <td>{record.projectDescription}</td>
       <td>
