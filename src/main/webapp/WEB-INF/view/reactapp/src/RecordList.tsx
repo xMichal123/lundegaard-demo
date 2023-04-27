@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useRef, FC, useEffect } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { format } from 'date-fns';
+import { Record } from './types';
 
-const RecordList = () => {
 
-  const [records, setRecords] = useState([]);
+const RecordList: FC = () => {
+
+  {/*const [records, setRecords] = useState<Record | undefined>([]);
   const [loading, setLoading] = useState(false);
   const [cookies] = useCookies(['XSRF-TOKEN']);
 
@@ -45,7 +47,7 @@ const RecordList = () => {
                              ? records.map(record => {
     return (<tr key={record.id}>
       <td style={{whiteSpace: 'nowrap'}}>{record.projectName}</td>
-      {/*<td>{format(record.from, 'mm/yyyy')} - {format(record.to, 'mm/yyyy')}</td>*/}
+      {/--*<td>{format(record.from, 'mm/yyyy')} - {format(record.to, 'mm/yyyy')}</td>*--/}
       <td>{record.employer}</td>
       <td>{record.projectDescription}</td>
       <td>
@@ -81,7 +83,10 @@ const RecordList = () => {
         </Table>
       </Container>
     </div>
-  );
+  );*/}
+  return (
+  <div>test</div>
+  )
 };
 
 export default RecordList;

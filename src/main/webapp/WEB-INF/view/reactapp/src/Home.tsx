@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useRef, FC, useEffect } from 'react';
 import './App.css';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'reactstrap';
 import { useCookies } from 'react-cookie';
 
-const Home = () => {
+const Home: FC = () => {
 
+interface User {
+  name: string;
+  age: number;
+  // other properties
+}
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState<User | undefined>(undefined);
   const [cookies] = useCookies(['XSRF-TOKEN']);
 
   useEffect(() => {

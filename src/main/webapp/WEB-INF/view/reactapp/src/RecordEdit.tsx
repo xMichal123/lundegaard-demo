@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useRef, FC, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { useCookies } from 'react-cookie';
+import { Record } from './types';
 
-const RecordEdit = () => {
-  const initialFormState = {
+const RecordEdit: FC = () => {
+  {/*const initialFormState = {
     name: '',
     address: '',
     city: '',
@@ -13,7 +14,7 @@ const RecordEdit = () => {
     country: '',
     postalCode: ''
   };
-  const [record, setRecord] = useState(initialFormState);
+  const [record, setRecord] = useState<Record>({id:''});
   const navigate = useNavigate();
   const { id } = useParams();
   const [cookies] = useCookies(['XSRF-TOKEN']);
@@ -26,13 +27,13 @@ const RecordEdit = () => {
     }
   }, [id, setRecord]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
 
     setRecord({ ...record, [name]: value })
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
 
     await fetch(`/api/record${record.id ? `/${record.id}` : ''}`, {
@@ -105,7 +106,10 @@ const RecordEdit = () => {
         </Form>
       </Container>
     </div>
-  )
+  )*/}
+  return (
+    <div>TEST</div>
+    );
 };
 
 export default RecordEdit;
