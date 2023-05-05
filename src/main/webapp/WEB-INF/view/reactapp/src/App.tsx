@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, RouteProps } from 'react-router
 import RecordList from './RecordList';
 import RecordEdit from './RecordEdit';
 import BabTest from './BabTest';
+import ChatTest from './ChatTest';
 
 const App: FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: FC = () => {
         <Route path='/records' element={<RecordList/>}/>
         <Route path='/records/:id' element={<RecordEdit/>}/>
         <Route path='/babtest' element={<BabTest/>}/>
+        <Route path='/chattest' element={<ChatTest/>}/>
       </Routes>
     </Router>
   );
