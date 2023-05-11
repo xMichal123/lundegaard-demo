@@ -63,10 +63,12 @@ interface User {
       <br/>
       <Button color="link"><Link to="/records">Manage Records</Link></Button>
       <br/>
-        <Button color="link"><Link to="/babtest">BabylonJS Test</Link></Button>
-        <br/>
-        <Button color="link"><Link to="/chattest">Chat Test</Link></Button>
-        <br/>
+      <Button color="link"><Link to="/babtest">BabylonJS Test</Link></Button>
+      <br/>
+      <Button color="link"><Link to="/babylon">Babylon Client</Link></Button>
+      <br/>
+      <Button color="link"><Link to="/chattest">Chat Test</Link></Button>
+      <br/>
       <Button color="link" onClick={logout}>Logout</Button>
     </div> :
     <Button color="primary" onClick={login}>Login</Button>;

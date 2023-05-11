@@ -1079,7 +1079,7 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@babylonjs/core@^5.22.0", "@babylonjs/core@^5.56.0", "@babylonjs/core@5.x || 6.x":
+"@babylonjs/core@^5.22.0", "@babylonjs/core@^5.56.0", "@babylonjs/core@4.x||>5.0.0-rc||5.x", "@babylonjs/core@5.x || 6.x":
   version "5.57.1"
   resolved "https://registry.npmjs.org/@babylonjs/core/-/core-5.57.1.tgz"
   integrity sha512-k8U+SFPVGvHgeNr651nxZL26iVCmTzjmRrdbQa0BGas+lg8PIV/tfhN4uTeWWQeRFLvjbkcHA5qD8x/Xk3EpMQ==
@@ -2891,6 +2891,11 @@ babylonjs-gltf2interface@^5.22.0:
   version "5.57.1"
   resolved "https://registry.npmjs.org/babylonjs-gltf2interface/-/babylonjs-gltf2interface-5.57.1.tgz"
   integrity sha512-RZnaKfJ6Q/AYLdIjBYMRxCW/HPEC8jabAL1U8wJ0KVziw6NSbSV6S80S22fUCPTyaZ7nCekn1TYg1IPmJ/eA6w==
+
+babylonjs-hook@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/babylonjs-hook/-/babylonjs-hook-0.1.1.tgz"
+  integrity sha512-uLcaX08NJy/1DeI+3GNQWQ2lQazhCR4U4jC6V+xy9rEvCCeFml3EWlwEwZv+8+oSHnMMV761jeQGjn9dVzgfMQ==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -7841,7 +7846,7 @@ react-transition-group@^4.4.2:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-"react@^16.8.0 || ^17 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.3.0", react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=18:
+"react@^16.8.0 || ^17 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.3.0", react@>=16, react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=18:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
