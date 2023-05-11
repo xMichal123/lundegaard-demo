@@ -8,7 +8,7 @@ import { Record } from './types';
 import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 import { MeshBuilder, ArcRotateCamera, ParticleSystem, Texture, Color4, SphereParticleEmitter } from '@babylonjs/core';
 import { Scene, Engine } from 'react-babylonjs';
-
+import Circulator from './Circulator';
 
 
 const BabTest: FC = () => {
@@ -16,7 +16,7 @@ const BabTest: FC = () => {
     <div className="App">
       <header className="App-header">
         <Engine antialias={true} adaptToDeviceRatio={true} canvasId="sample-canvas">
-          <Scene onSceneMount={(props) => {
+          {/*<Scene onSceneMount={(props) => {
             var scene = props.scene;
             var camera = new ArcRotateCamera("ArcRotateCamera", 1, 0.8, 5, new Vector3(0, 0, 0), scene);
             camera.attachControl(props.canvas, true);
@@ -77,7 +77,24 @@ const BabTest: FC = () => {
             starsParticles.renderingGroupId = 0;
 
             starsParticles.start();
-          }}>
+          }}>*/}
+          <Scene>
+            <arcRotateCamera
+                name="camera1"
+                alpha={Math.PI / 3}
+                beta={Math.PI / 4.5}
+                radius={9.0}
+                target={Vector3.Zero()}
+                minZ={0.001}
+                position={Vector3.Zero()}
+            />
+
+            <hemisphericLight
+                name="light1"
+                intensity={0.7}
+                direction={Vector3.Up()}
+            />
+            <Circulator />
           </Scene>
         </Engine>
       </header>
