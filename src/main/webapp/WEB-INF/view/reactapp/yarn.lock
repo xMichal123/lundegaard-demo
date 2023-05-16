@@ -1084,7 +1084,7 @@
   resolved "https://registry.npmjs.org/@babylonjs/core/-/core-5.57.1.tgz"
   integrity sha512-k8U+SFPVGvHgeNr651nxZL26iVCmTzjmRrdbQa0BGas+lg8PIV/tfhN4uTeWWQeRFLvjbkcHA5qD8x/Xk3EpMQ==
 
-"@babylonjs/gui@^5.56.0", "@babylonjs/gui@5.x || 6.x":
+"@babylonjs/gui@5.57.1", "@babylonjs/gui@5.x || 6.x":
   version "5.57.1"
   resolved "https://registry.npmjs.org/@babylonjs/gui/-/gui-5.57.1.tgz"
   integrity sha512-NUOYKF5iAA0UmFFHUBkb12K9Zvqw8BnOVAbM27CZ7WpnHFQ+4/CJuy9nFoCGkBjv2A5W7M1ML/7cjmce0CbdRA==

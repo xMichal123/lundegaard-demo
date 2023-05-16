@@ -1,33 +1,30 @@
-import React, { useState, useRef, FC, useEffect } from 'react';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from './AppNavbar';
-import { Link } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
-import { format } from 'date-fns';
-import { Record } from './types';
+import React, { createRef, useRef, FC, useEffect } from 'react';
 import { Vector3 } from '@babylonjs/core/Maths/math.vector';
-import { StandardMaterial, MeshBuilder, Scene, Color4, SphereParticleEmitter } from '@babylonjs/core';
-import { Texture } from '@babylonjs/core/Materials/Textures/texture';
+import { Plane, StandardMaterial, Texture } from 'react-babylonjs';
 import { Mesh } from '@babylonjs/core/Meshes/mesh';
-import { Engine, Plane } from 'react-babylonjs';
+import SceneManager from './SceneManager';
 
 type CirculatorItemProps = {
-    iconUrl: string,
-    position: Vector3
-}
+    iconUrl: string;
+    position: Vector3;
+};
 
-const CirculatorItem: FC<CirculatorItemProps> = ({iconUrl, position}) => {
+const CirculatorItem: FC<CirculatorItemProps> = ({ iconUrl, position }) => {
+    const myRef: React.RefObject<Mesh> = useRef<Mesh>(null);
+
+    useEffect(() => {
+        if (myRef.current) {
+            SceneManager.addCirclingItem(myRef.current);
+        }
+    }, []);
+
     return (
-        <plane name="plane" size={2} width={2} height={2} position={position}>
-            <standardMaterial name="planeMaterial" >
-
-            <texture assignTo="diffuseTexture" name="texture" url={iconUrl} hasAlpha={true}>
-
-            </texture>
+        <plane name="plane" size={2} width={2} height={2} position={position} ref={myRef}>
+            <standardMaterial name="planeMaterial">
+                <texture assignTo="diffuseTexture" name="texture" url={iconUrl} hasAlpha={true} />
             </standardMaterial>
         </plane>
     );
 };
-
 
 export default CirculatorItem;
