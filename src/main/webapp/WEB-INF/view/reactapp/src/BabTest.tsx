@@ -22,10 +22,37 @@ const BabTest: FC = () => {
       SceneManager.camera = cameraRef.current;
     }
   }, []);*/
+  useEffect(() => {
+    const handleResize = () => {
+      const canvas = document.getElementById('babylon-canvas');
+      if (canvas) {
+        canvas.style.width = '100vw';//`${window.innerWidth}px`;
+        canvas.style.height = '100vh';//`${window.innerHeight}px`;
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Hide scrollbars on the body and html elements
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      // Restore scrollbars on cleanup
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+    };
+  }, []);
 
   return (
-    <div className="App">
-        <Engine antialias={true} adaptToDeviceRatio={true} canvasId="sample-canvas">
+    <div className="App" style={{ width: '100vw', height: '100vh' }}>
+        <Engine antialias={true} adaptToDeviceRatio={true} canvasId="babylon-canvas">
           <Scene onSceneMount={(props) => {
             var scene = props.scene;
             SceneManager.scene = scene;
