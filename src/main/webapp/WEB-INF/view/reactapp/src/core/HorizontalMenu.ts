@@ -3,13 +3,14 @@ import { useBeforeRender } from 'react-babylonjs';
 import { AdvancedDynamicTexture, Button, StackPanel } from '@babylonjs/gui/2D';
 
 
-class HorizontalMenu extends StackPanel {
+export class HorizontalMenu extends StackPanel {
 
     constructor()
     {
         super();
 
         this.isVertical = false;
+        this.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
 
         // Create the menu items using GUI controls
         const button1 = Button.CreateSimpleButton('menuItem1', 'Item 1');
@@ -19,6 +20,7 @@ class HorizontalMenu extends StackPanel {
         button1.background = 'black';
         button1.top = '10px';
         button1.left = '10px';
+        button1.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
         button1.onPointerUpObservable.add(() => {
             // Handle button click event
             console.log('Item 1 clicked');
@@ -32,6 +34,7 @@ class HorizontalMenu extends StackPanel {
         button2.background = 'black';
         button2.top = '10px';
         button2.left = '120px';
+        button2.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
         button2.onPointerUpObservable.add(() => {
             // Handle button click event
             console.log('Item 2 clicked');
@@ -45,6 +48,7 @@ class HorizontalMenu extends StackPanel {
         button3.background = 'black';
         button3.top = '10px';
         button3.left = '230px';
+        button3.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
         button3.onPointerUpObservable.add(() => {
             // Handle button click event
             console.log('Item 3 clicked');
@@ -53,5 +57,3 @@ class HorizontalMenu extends StackPanel {
 
     }
 }
-
-export default HorizontalMenu;

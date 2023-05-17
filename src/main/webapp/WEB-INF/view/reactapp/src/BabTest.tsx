@@ -28,10 +28,10 @@ const BabTest: FC = () => {
         <Engine antialias={true} adaptToDeviceRatio={true} canvasId="sample-canvas">
           <Scene onSceneMount={(props) => {
             var scene = props.scene;
+            SceneManager.scene = scene;
             SceneManager.camera = new ArcRotateCamera("ArcRotateCamera", 1, 0.8, 5, new Vector3(0, 0, 0), scene);
             SceneManager.camera.attachControl(props.canvas, true);
             scene.clearColor = new Color4(0.0, 0.0, 0.0, 1);
-
 
             // Setup environment
             //SceneManager.camera = new ArcRotateCamera("ArcRotateCamera", 1, 0.8, 5, new Vector3(0, 0, 0), scene);
@@ -103,6 +103,8 @@ const BabTest: FC = () => {
               hook();
             });
           }}>
+
+
             <Circulator />
             {/*
             <arcRotateCamera ref={cameraRef}
