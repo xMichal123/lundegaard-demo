@@ -12,6 +12,7 @@ import SceneManager from './SceneManager';
 import ResponsiveMenu from './core/ResponsiveMenuManager';
 import {Mesh} from "@babylonjs/core/Meshes/mesh";
 import { AdvancedDynamicTexture, Button } from '@babylonjs/gui';
+import GuiLoader from './core/gui/GuiLoader';
 
 
 const BabTest: FC = () => {
@@ -58,6 +59,9 @@ const BabTest: FC = () => {
             SceneManager.scene = scene;
             SceneManager.camera = new ArcRotateCamera("ArcRotateCamera", 1, 0.8, 5, new Vector3(0, 0, 0), scene);
             SceneManager.camera.attachControl(props.canvas, true);
+            SceneManager.advancedDynamicTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
+            GuiLoader.init();
+
             scene.clearColor = new Color4(0.0, 0.0, 0.0, 1);
 
             // Setup environment
@@ -120,9 +124,7 @@ const BabTest: FC = () => {
 
             starsParticles.start();
 
-            var advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
-
-            const responsiveMenu = new ResponsiveMenu(advancedTexture);
+            const responsiveMenu = new ResponsiveMenu();
           }}
 
           onBeforeRenderObservable={() => {

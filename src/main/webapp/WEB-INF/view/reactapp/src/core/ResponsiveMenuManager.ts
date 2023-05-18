@@ -7,18 +7,15 @@ import HamburgerMenu from './HamburgerMenu';
 import { AdvancedDynamicTexture } from '@babylonjs/gui/2D/advancedDynamicTexture';
 
 class ResponsiveMenuManager {
-    private _advancedDynamicTexture: AdvancedDynamicTexture;
     private _horizontalMenu: HorizontalMenu;
     private _hamburgerMenu: HamburgerMenu;
 
-    constructor(advancedDynamicTexture: AdvancedDynamicTexture) {
-        this._advancedDynamicTexture = advancedDynamicTexture;
-
+    constructor() {
         this._horizontalMenu = new HorizontalMenu();
-        this._advancedDynamicTexture.addControl(this._horizontalMenu);
+        SceneManager.advancedDynamicTexture?.addControl(this._horizontalMenu);
 
         this._hamburgerMenu = new HamburgerMenu();
-        this._advancedDynamicTexture.addControl(this._hamburgerMenu);
+        SceneManager.advancedDynamicTexture?.addControl(this._hamburgerMenu);
 
         SceneManager.addRenderHook(() => {
             const canvas = SceneManager.scene?.getEngine().getRenderingCanvas();

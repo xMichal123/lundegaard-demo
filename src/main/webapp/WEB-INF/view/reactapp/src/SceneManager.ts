@@ -1,13 +1,13 @@
 import { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
 import { Camera, Scene } from '@babylonjs/core';
-//import HorizontalMenu from './core/HorizontalMenu';
-//import HamburgerMenu from './core/HamburgerMenu';
+import { Control, AdvancedDynamicTexture, Button, StackPanel } from '@babylonjs/gui/2D';
 
 class SceneManager {
     private _renderHooks: (() => void)[] = [];
     private _circlingItems: (AbstractMesh)[] = [];
     private _camera: Camera | undefined;
     private _scene: Scene | undefined;
+    private _advancedDynamicTexture: AdvancedDynamicTexture | undefined;
     //private _horizontalMenu: typeof HorizontalMenu | undefined;
     //private _hamburgerMenu: typeof HamburgerMenu | undefined;
 
@@ -35,21 +35,13 @@ class SceneManager {
         this._camera = value;
     }
 
-    /*public get wideMenu() {
-        return this._horizontalMenu;
+    public get advancedDynamicTexture() {
+        return this._advancedDynamicTexture;
     }
 
-    public set wideMenu(value) {
-        this._horizontalMenu = value;
+    public set advancedDynamicTexture(value) {
+        this._advancedDynamicTexture = value;
     }
-
-    public get hamburgerMenu() {
-        return this._hamburgerMenu;
-    }
-
-    public set hamburgerMenu(value) {
-        this._hamburgerMenu = value;
-    }*/
 
     public get renderHooks() {
         return this._renderHooks;
