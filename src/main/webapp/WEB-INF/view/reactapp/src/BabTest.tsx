@@ -9,10 +9,11 @@ import { MeshBuilder, ArcRotateCamera, ParticleSystem, Texture, Color4, SpherePa
 import { Scene, Engine } from 'react-babylonjs';
 import Circulator from './Circulator';
 import SceneManager from './SceneManager';
-import ResponsiveMenu from './core/ResponsiveMenuManager';
+import ResponsiveMenuManager from './core/ResponsiveMenuManager';
 import {Mesh} from "@babylonjs/core/Meshes/mesh";
 import { AdvancedDynamicTexture, Button } from '@babylonjs/gui';
 import GuiLoader from './core/gui/GuiLoader';
+import Navigator from './Navigator';
 
 
 const BabTest: FC = () => {
@@ -124,7 +125,8 @@ const BabTest: FC = () => {
 
             starsParticles.start();
 
-            const responsiveMenu = new ResponsiveMenu();
+            const responsiveMenu = new ResponsiveMenuManager();
+            const navigator = new Navigator(responsiveMenu);
           }}
 
           onBeforeRenderObservable={() => {

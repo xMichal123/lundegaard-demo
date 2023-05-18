@@ -5,6 +5,11 @@ import GuiLoader from "./gui/GuiLoader";
 
 
 export class HorizontalMenu extends StackPanel {
+    private buttonWidth = 200;
+    private buttonHeight = 40;
+    private buttonGap = 10;
+
+    private buttonCount = 0;
 
     constructor()
     {
@@ -12,91 +17,31 @@ export class HorizontalMenu extends StackPanel {
 
         this.isVertical = false;
         this.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
+    }
+
+    addMenuItem(caption: string, onClickCallback: () => void) {
         const thisHelp = this;
 
-        // Create the menu items using GUI controls
-        GuiLoader.CreateNewButton((button1) => {
-            button1.width = '200px';
-            button1.height = '40px';
-            button1.color = 'white';
-            button1.background = 'black';
-            button1.top = '10px';
-            button1.left = '10px';
-            button1.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
-
-            if (button1.textBlock !== null) {
-                button1.textBlock.text = '🏡 Home';
-            }
-
-            button1.onPointerUpObservable.add(() => {
-                // Handle button click event
-                console.log('Item 1 clicked');
-            });
-
-            thisHelp.addControl(button1);
-        });
-
-        GuiLoader.CreateNewButton((button2) => {
-            button2.width = '200px';
-            button2.height = '40px';
-            button2.color = 'white';
-            button2.background = 'black';
-            button2.top = '10px';
-            button2.left = '220px';
-            button2.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
-
-            if (button2.textBlock !== null) {
-                button2.textBlock.text = 'What we do';
-            }
-
-            button2.onPointerUpObservable.add(() => {
-                // Handle button click event
-                console.log('Item 2 clicked');
-            });
-
-            thisHelp.addControl(button2);
-        });
-
-        GuiLoader.CreateNewButton((button3) => {
-            button3.width = '200px';
-            button3.height = '40px';
-            button3.color = 'white';
-            button3.background = 'black';
-            button3.top = '10px';
-            button3.left = '430px';
-            button3.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
+        GuiLoader.CreateNewButton((button) => {
+            button.width = thisHelp.buttonWidth + 'px';
+            button.height = thisHelp.buttonHeight + 'px';
+            button.color = 'white';
+            button.background = 'black';
+            button.top = '10px';
+            button.left = thisHelp.buttonCount * (thisHelp.buttonWidth + thisHelp.buttonGap) + 'px';
+            button.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
  
-            if (button3.textBlock !== null) {
-                button3.textBlock.text = 'About Us';
+            if (button.textBlock !== null) {
+                button.textBlock.text = caption;
             }
 
-            button3.onPointerUpObservable.add(() => {
-                // Handle button click event
-                console.log('Item 3 clicked');
+            button.onPointerUpObservable.add(() => {
+                onClickCallback();
             });
 
-            thisHelp.addControl(button3);
-        });
+            thisHelp.addControl(button);
 
-        GuiLoader.CreateNewButton((button4) => {
-            button4.width = '200px';
-            button4.height = '40px';
-            button4.color = 'white';
-            button4.background = 'black';
-            button4.top = '10px';
-            button4.left = '630px';
-            button4.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
- 
-            if (button4.textBlock !== null) {
-                button4.textBlock.text = 'Contact Us';
-            }
-
-            button4.onPointerUpObservable.add(() => {
-                // Handle button click event
-                console.log('Item 3 clicked');
-            });
-
-            thisHelp.addControl(button4);
+            thisHelp.buttonCount++;
         });
     }
 }

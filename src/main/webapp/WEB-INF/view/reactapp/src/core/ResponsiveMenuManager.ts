@@ -32,8 +32,9 @@ class ResponsiveMenuManager {
         })
     }
 
-    createMenu() {
-
+    addMenuItem(caption: string, onClickCallback: () => void) {
+        this._hamburgerMenu.addMenuItem(caption, onClickCallback);
+        this._horizontalMenu.addMenuItem(caption, onClickCallback);
     }
 }
 

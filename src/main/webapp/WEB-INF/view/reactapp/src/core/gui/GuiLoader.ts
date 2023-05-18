@@ -28,18 +28,17 @@ class GuiLoader {
     init() {
         const assetsManager = new AssetsManager(SceneManager.scene);
 
-// Load the JSON file containing the button configuration
+        // Load the JSON file containing the button configuration
         const buttonJsonUrl = "./data/guiControl.json";
         const buttonTask = assetsManager.addTextFileTask("buttonTask", buttonJsonUrl);
 
-// Register a callback when the button is loaded
+        // Register a callback when the button is loaded
         buttonTask.onSuccess = (task) => {
             const buttonJson = task.text;
             const buttonConfig = JSON.parse(buttonJson);
 
             if (SceneManager.advancedDynamicTexture !== undefined) {
                 // Create the button from the loaded configuration
-                console.log(buttonConfig);
                 const parsedButton = Button.Parse(buttonConfig, SceneManager.advancedDynamicTexture);
 
                 if (parsedButton instanceof Button) {
@@ -52,7 +51,7 @@ class GuiLoader {
             }
         };
 
-// Start loading the assets
+        // Start loading the assets
         assetsManager.load();
     }
 

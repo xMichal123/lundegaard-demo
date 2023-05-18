@@ -8,6 +8,13 @@ import GuiLoader from "./gui/GuiLoader";
 
 
 class HamburgerMenu extends StackPanel {
+    private buttonWidth = 200;
+    private buttonHeight = 40;
+    private buttonGap = 10;
+
+    private buttonCount = 0;
+
+    private _buttonPanel: StackPanel;
 
     constructor() {
         super();
@@ -29,69 +36,63 @@ class HamburgerMenu extends StackPanel {
 
         this.addControl(button);
 
-        var panel = new StackPanel("menu");
+        this._buttonPanel = new StackPanel("menu");
         //panel.width = 1;
         //panel.height = 1;
-        panel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-        panel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this._buttonPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+        this._buttonPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         //panel.background = "#33804D55";
-        panel.isVisible = false;
+        this._buttonPanel.isVisible = false;
 
-        this.addControl(panel);
-
-        GuiLoader.CreateNewButton((button0) => {
-            button0.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-            button0.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-            button0.width = '200px';
-            button0.height = '40px';
-            button0.top = 0;
-            button0.background = "#FFFFFF99";
-
-            if (button0.textBlock !== null) {
-                button0.textBlock.text = 'Home';
-            }
-
-            button0.onPointerUpObservable.add(() => {
-
-                button0.background = "#FFFFFF99";
-            });
-
-            panel.addControl(button0);
-        });
-
-        GuiLoader.CreateNewButton((button2) => {
-            button2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-            button2.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-            button2.width = '200px';
-            button2.height = '40px';
-            button2.top = '128px';
-            button2.background = "#FFFFFF99";
-
-            button2.onPointerUpObservable.add(() => {
-                button2.background = "#FFFFFF99";
-            });
-
-            panel.addControl(button2);
-        });
+        this.addControl(this._buttonPanel);
 
         var _menu = 0;
 
+        const thisHelp = this;
+
         var changeMenu = function() {
             if (_menu == 0){
-                console.log ("menu is active " + _menu);
-                _menu = 1;
-                panel.isVisible = true;
+                button.background = "#FFFFFF55";
+
+                 _menu = 1;
+                 thisHelp._buttonPanel.isVisible = true;
             }
 
             else if(_menu == 1){
                 button.background = "transparent";
  
-                panel.isVisible = false;
                 _menu = 0;
+                thisHelp._buttonPanel.isVisible = false;
             }
 
             return _menu;
         }
+    }
+
+    addMenuItem(caption: string, onClickCallback: () => void) {
+        const thisHelp = this;
+
+        GuiLoader.CreateNewButton((but) => {
+            but.width = thisHelp.buttonWidth + 'px';
+            but.height = thisHelp.buttonHeight + 'px';
+            but.color = 'white';
+            but.background = '#FFFFFF99';
+            but.top = thisHelp.buttonCount * (thisHelp.buttonHeight + thisHelp.buttonGap) + 'px';
+            but.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+            but.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+ 
+            if (but.textBlock !== null) {
+                but.textBlock.text = caption;
+            }
+
+            but.onPointerUpObservable.add(() => {
+                onClickCallback();
+            });
+
+            this._buttonPanel.addControl(but);
+
+            thisHelp.buttonCount++;
+        });
     }
 }
 
