@@ -40,7 +40,7 @@ class HamburgerMenu extends StackPanel {
         this.addControl(panel);
 
         GuiLoader.CreateNewButton((button0) => {
-            button0.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+            button0.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
             button0.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
             button0.width = '200px';
             button0.height = '40px';
@@ -60,7 +60,7 @@ class HamburgerMenu extends StackPanel {
         });
 
         GuiLoader.CreateNewButton((button2) => {
-            button2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+            button2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
             button2.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
             button2.width = '200px';
             button2.height = '40px';
