@@ -32,6 +32,7 @@ export class HorizontalMenu extends StackPanel {
                 // Handle button click event
                 console.log('Item 1 clicked');
             });
+
             thisHelp.addControl(button1);
         });
 
@@ -52,6 +53,7 @@ export class HorizontalMenu extends StackPanel {
                 // Handle button click event
                 console.log('Item 2 clicked');
             });
+
             thisHelp.addControl(button2);
         });
 
@@ -72,6 +74,7 @@ export class HorizontalMenu extends StackPanel {
                 // Handle button click event
                 console.log('Item 3 clicked');
             });
+
             thisHelp.addControl(button3);
         });
 
@@ -85,13 +88,14 @@ export class HorizontalMenu extends StackPanel {
             button4.verticalAlignment = HorizontalMenu.VERTICAL_ALIGNMENT_TOP;
  
             if (button4.textBlock !== null) {
-                button4.textBlock.text = 'About Us';
+                button4.textBlock.text = 'Contact Us';
             }
 
             button4.onPointerUpObservable.add(() => {
                 // Handle button click event
                 console.log('Item 3 clicked');
             });
+
             thisHelp.addControl(button4);
         });
     }
