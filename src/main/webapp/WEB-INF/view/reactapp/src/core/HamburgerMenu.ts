@@ -4,6 +4,8 @@ import { Camera } from '@babylonjs/core';
 import {Vector3} from "@babylonjs/core/Maths/math.vector";
 import SceneManager from '../SceneManager';
 import { AdvancedDynamicTexture, Grid, StackPanel, Control, Button } from '@babylonjs/gui'
+import GuiLoader from "./gui/GuiLoader";
+
 
 class HamburgerMenu extends Grid {
 
@@ -65,7 +67,7 @@ class HamburgerMenu extends Grid {
     //Attaching the panel to the this on row #0 and column #1 cell
         this.addControl(paneltop,0,1);
 
-        var button = Button.CreateImageOnlyButton("button", "https://dl.dropbox.com/s/bxuo28t42nple6o/hamburger1.png");
+        var button = Button.CreateImageOnlyButton("button", "./images/hamburger.png");
         this.addControl(button);
 
         button.background = "#FFFFFF55";
@@ -77,81 +79,65 @@ class HamburgerMenu extends Grid {
 
 
 
-//Let's first add all of our left menu buttons.
-//All buttons stack in order
-//At this state, I will simply comment the instructions for the parts that are not yet here.
-//Also note that all icons have been replaced with icons from the assets library. Some icons are being used as a duplicate.
-//In the original scenario/GUI, icons would eventually change (change source) depending on context
+    //Let's first add all of our left menu buttons.
+    //All buttons stack in order
+    //At this state, I will simply comment the instructions for the parts that are not yet here.
+    //Also note that all icons have been replaced with icons from the assets library. Some icons are being used as a duplicate.
+    //In the original scenario/GUI, icons would eventually change (change source) depending on context
 
-//A tour button (first under menu)
-        var button0 = Button.CreateImageOnlyButton("button0", "https://dl.dropbox.com/s/pqbt4f8akrwshvz/camera.png");
-        button0.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-        button0.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        button0.width = 1;
-        button0.height = '128px';
-        button0.top = 0;
-        button0.background = "#FFFFFF99";
-
-        button0.onPointerUpObservable.add(() => {
-
-            button2.background = "#FFFFFF99";
-
-            if (button2.image !== null) {
-                button2.image.source = "https://dl.dropbox.com/s/jfsld3nngb0e14n/houselist.png";
-                button2.image.alpha = 1;
-            }
-
-            //changeTour();
-        });
-
-        panel.addControl(button0);
-
-
-//An edit & compare button (second under menu)
-        var button2 = Button.CreateImageOnlyButton("button2", "https://dl.dropbox.com/s/jfsld3nngb0e14n/houselist.png");
-        button2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-        button2.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        button2.width = 1;
-        button2.height = '128px';
-        button2.top = '128px';
-        button2.background = "#FFFFFF99";
-
-        button2.onPointerUpObservable.add(() => {
-
+    //A tour button (first under menu)
+        GuiLoader.CreateNewButton((button0) => {
+            button0.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+            button0.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+            button0.width = 1;
+            button0.height = '128px';
+            button0.top = 0;
             button0.background = "#FFFFFF99";
 
-            if (button0.image !== null) {
-                button0.image.source = "https://dl.dropbox.com/s/pqbt4f8akrwshvz/camera.png";
-                button0.image.alpha = 1;
+            if (button0.textBlock !== null) {
+                button0.textBlock.text = 'Home';
             }
 
-            //btnMoreFw.background = "#FFFFFF55";
-            //btnMoreFw.color = "#ffffffdd";
-            //btnMoreFw.alpha = 1;
+            button0.onPointerUpObservable.add(() => {
 
-            //poi = 0;
-            //_layout = 0;
-            //_tour = 0;
-            //_sv1step = 2;
-            //changeLines();
-            //changeEdit();
-            //changeSvMore();
+                button0.background = "#FFFFFF99";
 
-            //return _tour + _layout + _sv1step;
+                /*if (button2.image !== null) {
+                    button2.image.source = "https://dl.dropbox.com/s/jfsld3nngb0e14n/houselist.png";
+                    button2.image.alpha = 1;
+                }*/
+
+                //changeTour();
+            });
+
+            panel.addControl(button0);
         });
 
-        panel.addControl(button2);
+        //An edit & compare button (second under menu)
+        GuiLoader.CreateNewButton((button2) => {
+            button2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+            button2.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+            button2.width = 1;
+            button2.height = '128px';
+            button2.top = '128px';
+            button2.background = "#FFFFFF99";
 
+            button2.onPointerUpObservable.add(() => {
 
+                button2.background = "#FFFFFF99";
 
+                /*if (button0.image !== null) {
+                    button0.image.source = "https://dl.dropbox.com/s/pqbt4f8akrwshvz/camera.png";
+                    button0.image.alpha = 1;
+                }*/
+            });
 
-///// * * * GUI FUNCTIONS * * * /////
-//Functions and animations triggered from button interactions can be elsewhere in the script or in a separate script.
+            panel.addControl(button2);
+        });
 
-//A variable to record the state of the menu (0 for hidden, 1 for shown)
         var _menu = 0;
 
-//The function called on pointerUp that will show or hide the menu, does some other things and changes the value of the var (shown or hidden)
+        //The function called on pointerUp that will show or hide the menu, does some other things and changes the value of the var (shown or hidden)
         var changeMenu = function() {
             if (_menu == 0){
                 //menu is NOT active - changing to active
@@ -165,7 +151,7 @@ class HamburgerMenu extends Grid {
                 console.log ("menu is NOT active " +_menu);
 
                 button.background = "transparent";
-                button0.background = "#FFFFFF99";
+                /*button0.background = "#FFFFFF99";
                 //button0.image.source = "tex/tour.svg";
 
                 if (button0.image !== null) {
@@ -177,7 +163,7 @@ class HamburgerMenu extends Grid {
 
                 if (button2.image !== null) {
                     button2.image.alpha = 1;
-                }
+                }*/
 
                 panel.isVisible = false;
                 _menu = 0;
