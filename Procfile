@@ -1,1 +1,1 @@
-web: mvn spring-boot:run -Pprod
+web: java -jar target/lundegaard-mihalik-demo-0.0.1-SNAPSHOT.war
