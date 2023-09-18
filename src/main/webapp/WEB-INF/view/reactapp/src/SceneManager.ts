@@ -1,11 +1,12 @@
 import { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
-import { Camera, Scene } from '@babylonjs/core';
+import { FollowCamera, Scene } from '@babylonjs/core';
 import { Control, AdvancedDynamicTexture, Button, StackPanel } from '@babylonjs/gui/2D';
 
 class SceneManager {
     private _renderHooks: (() => void)[] = [];
     private _circlingItems: (AbstractMesh)[] = [];
-    private _camera: Camera | undefined;
+    private _camera: FollowCamera | undefined;
+    private _videoPlane: AbstractMesh | undefined;
     private _scene: Scene | undefined;
     private _advancedDynamicTexture: AdvancedDynamicTexture | undefined;
     //private _horizontalMenu: typeof HorizontalMenu | undefined;
@@ -25,6 +26,18 @@ class SceneManager {
 
     public set scene(value) {
         this._scene = value;
+    }
+
+    public get videoPlane() {
+        return this._videoPlane;
+    }
+
+    public set videoPlane(value) {
+        this._videoPlane = value;
+
+        if (this._camera !== undefined && this._videoPlane !== undefined) {
+            this._camera.lockedTarget = this._videoPlane;
+        }
     }
 
     public get camera() {

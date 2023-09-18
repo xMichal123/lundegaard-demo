@@ -14,6 +14,8 @@ import {Mesh} from "@babylonjs/core/Meshes/mesh";
 import { AdvancedDynamicTexture, Button } from '@babylonjs/gui';
 import GuiLoader from './core/gui/GuiLoader';
 import Navigator from './Navigator';
+import VideoPlane from './core/VideoPlane';
+import JuicyCamera from './core/JuicyCamera';
 
 
 const BabTest: FC = () => {
@@ -58,8 +60,8 @@ const BabTest: FC = () => {
           <Scene onSceneMount={(props) => {
             var scene = props.scene;
             SceneManager.scene = scene;
-            SceneManager.camera = new ArcRotateCamera("ArcRotateCamera", 1, 0.8, 5, new Vector3(0, 0, 0), scene);
-            SceneManager.camera.attachControl(props.canvas, true);
+            /*SceneManager.camera = new ArcRotateCamera("ArcRotateCamera", 1, 0.8, 5, new Vector3(0, 0, 0), scene);
+            SceneManager.camera.attachControl(props.canvas, true);*/
             SceneManager.advancedDynamicTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
             GuiLoader.init();
 
@@ -153,6 +155,8 @@ const BabTest: FC = () => {
                 intensity={0.7}
                 direction={Vector3.Up()}
             />
+            <VideoPlane position={new Vector3(0, 0, 0)} />
+            <JuicyCamera position={new Vector3(0, 0, -5)} />
           </Scene>
         </Engine>
     </div>
