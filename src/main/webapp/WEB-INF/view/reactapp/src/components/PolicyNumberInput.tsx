@@ -9,6 +9,7 @@ const PolicyNumberInput: React.FC = () => {
         id="policyNumber"
         name="policyNumber"
         pattern="[A-Za-z0-9]+"
+        title="Only letters and numbers are allowed"
         required
       />
     </div>

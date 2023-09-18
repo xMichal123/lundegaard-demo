@@ -8,7 +8,8 @@ const SurnameInput: React.FC = () => {
         type="text"
         id="surname"
         name="surname"
-        pattern="[A-Za-z]+"
+        pattern="[a-zA-Z]+"
+        title="Only letters are allowed"
         required
       />
     </div>

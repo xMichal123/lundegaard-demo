@@ -16,11 +16,11 @@ const ContactForm: React.FC = () => {
     request: '',
   });
 
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
         const response = await axios.post('/api/contact-requests/submit', formData);
+        alert('Thank you! Your request will be addressed soon with id: ' + response.data.id + '.')
         console.log('Form submitted successfully:', response.data);
         // Handle success or navigate to a success page
     } catch (error) {
