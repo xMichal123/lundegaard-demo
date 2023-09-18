@@ -2,10 +2,10 @@
 
 the demo can be found under the lundegaard branch.
 
-install commands:
+maven install commands:
 clean,install
 
-run commands:
+maven run commands:
 spring-boot:run -Pprod
 
 The demo can be viewed at
