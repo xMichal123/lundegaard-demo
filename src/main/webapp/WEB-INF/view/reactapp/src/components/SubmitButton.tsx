@@ -1,15 +1,11 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 const SubmitButton: React.FC = () => {
-  // Implement form submission logic later
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // Implement form submission logic here
-  };
 
   return (
     <div className="form-group">
-      <button type="submit" onClick={handleSubmit}>Send Request</button>
+      <button type="submit">Send Request</button>
     </div>
   );
 };

@@ -22,9 +22,9 @@ const KindOfRequestSelect: React.FC = () => {
     <div className="form-group">
       <label htmlFor="kindOfRequest">Kind of Request</label>
       <select id="kindOfRequest" name="kindOfRequest">
-        {options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+        {options.map((option) => (
+          <option key={(option as any).id} value={(option as any).id}>
+            {(option as any).name}
           </option>
         ))}
       </select>

@@ -5,14 +5,14 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
-
 @Entity
-data class KindOfRequest(
+data class ContactRequest(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
-    val name: String = "" // Provide default values for other properties as needed
-) {
-    // Default constructor with no parameters
-    constructor() : this(id = 0, name = "")
-}
+    val kindOfRequest: String,
+    val policyNumber: String,
+    val name: String,
+    val surname: String,
+    val request: String
+)

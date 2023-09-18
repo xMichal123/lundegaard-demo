@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import KindOfRequestSelect from './KindOfRequestSelect';
 import PolicyNumberInput from './PolicyNumberInput';
 import NameInput from './NameInput';
 import SurnameInput from './SurnameInput';
 import RequestTextarea from './RequestTextarea';
 import SubmitButton from './SubmitButton';
+import axios from 'axios';
 
 const ContactForm: React.FC = () => {
-  // Implement form submission logic later
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // Implement form submission logic here
+  const [formData, setFormData] = useState({
+    kindOfRequest: '',
+    policyNumber: '',
+    name: '',
+    surname: '',
+    request: '',
+  });
+
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+        const response = await axios.post('/api/contact-requests/submit', formData);
+        console.log('Form submitted successfully:', response.data);
+        // Handle success or navigate to a success page
+    } catch (error) {
+        console.error('Form submission error:', error);
+        // Handle error
+    }
   };
 
   return (
