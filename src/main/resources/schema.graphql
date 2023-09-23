@@ -1,0 +1,8 @@
+type RequestKind {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  requestKinds: [RequestKind!]!
+}

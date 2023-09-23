@@ -1,30 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
+
+// Define a TypeScript interface for the shape of the option object
+interface Option {
+  id: string;
+  name: string;
+}
+
+const KIND_OF_REQUESTS_QUERY = gql`
+  query {
+    requestKinds {
+      id
+      name
+    }
+  }
+`;
 
 const KindOfRequestSelect: React.FC = () => {
-  const [options, setOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('');
-  // Other form state variables
+  const { loading, error, data } = useQuery<{ requestKinds: Option[] }>(KIND_OF_REQUESTS_QUERY);
 
-  useEffect(() => {
-    // Fetch options from the backend when the component mounts
-    axios.get('/api/request-kinds/list')
-      .then((response) => {
-        setOptions(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching options:', error);
-      });
-  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!data) return <p>No data!</p>;
 
+  const options = data.requestKinds;
 
   return (
     <div className="form-group">
       <label htmlFor="kindOfRequest">Kind of Request</label>
       <select id="kindOfRequest" name="kindOfRequest">
-        {options.map((option) => (
-          <option key={(option as any).id} value={(option as any).id}>
-            {(option as any).name}
+        {options.map((option: Option) => (
+          <option key={option.id} value={option.id}>
+            {option.name}
           </option>
         ))}
       </select>
