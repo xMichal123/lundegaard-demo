@@ -14,7 +14,7 @@ import java.awt.print.Book
 @Controller
 class KindOfRequestController @Autowired constructor(private val kindOfRequestService: KindOfRequestService) {
     @QueryMapping
-    fun requestKinds(): MutableIterable<KindOfRequest> {
+    fun getAllRequestKinds(): MutableIterable<KindOfRequest> {
         return kindOfRequestService.getAllKindOfRequests()
     }
 }

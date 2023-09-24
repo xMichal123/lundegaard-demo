@@ -10,7 +10,7 @@ interface Option {
 
 const KIND_OF_REQUESTS_QUERY = gql`
   query {
-    requestKinds {
+    getAllRequestKinds {
       id
       name
     }
@@ -18,13 +18,13 @@ const KIND_OF_REQUESTS_QUERY = gql`
 `;
 
 const KindOfRequestSelect: React.FC = () => {
-  const { loading, error, data } = useQuery<{ requestKinds: Option[] }>(KIND_OF_REQUESTS_QUERY);
+  const { loading, error, data } = useQuery<{ getAllRequestKinds: Option[] }>(KIND_OF_REQUESTS_QUERY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   if (!data) return <p>No data!</p>;
 
-  const options = data.requestKinds;
+  const options = data.getAllRequestKinds;
 
   return (
     <div className="form-group">

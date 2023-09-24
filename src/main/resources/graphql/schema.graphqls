@@ -1,8 +1,33 @@
-type RequestKind {
+# Import necessary scalars for timestamps and date inputs
+scalar Date
+scalar DateTime
+
+type RequestKind2 {
   id: ID!
   name: String!
 }
 
+type ContactRequest2 {
+  id: ID!
+  kindOfRequest: String
+  policyNumber: String
+  name: String
+  surname: String
+  request: String
+  createdAt: DateTime
+}
+
+input ContactRequestFilter {
+  kindOfRequest: String
+  policyNumber: String
+  name: String
+  surname: String
+  startDate: Date
+  endDate: Date
+}
+
 type Query {
-  requestKinds: [RequestKind!]!
+  getAllRequestKinds: [RequestKind2!]!
+  # Fetch a list of contact requests with optional filtering
+  getContactRequests(filter: ContactRequestFilter): [ContactRequest2]
 }
