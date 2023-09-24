@@ -21,23 +21,24 @@
 		<npm.version>9.8.0</npm.version>
 	</properties>
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-graphql -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-graphql</artifactId>
+			<version>3.1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java-extended-scalars -->
 		<dependency>
 			<groupId>com.graphql-java</groupId>
-			<artifactId>graphql-java</artifactId>
-			<version>21.1</version>
+			<artifactId>graphql-java-extended-scalars</artifactId>
+			<version>21.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphql-spring-boot-starter -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.graphql/spring-graphql-test -->
 		<dependency>
-			<groupId>com.graphql-java-kickstart</groupId>
-			<artifactId>graphql-spring-boot-starter</artifactId>
-			<version>15.0.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphql-java-tools -->
-		<dependency>
-			<groupId>com.graphql-java-kickstart</groupId>
-			<artifactId>graphql-java-tools</artifactId>
-			<version>13.1.0</version>
+			<groupId>org.springframework.graphql</groupId>
+			<artifactId>spring-graphql-test</artifactId>
+			<version>1.2.3</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
 		<dependency>
@@ -45,15 +46,20 @@
 			<artifactId>validation-api</artifactId>
 			<version>2.0.1.Final</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>8.0.1.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
@@ -87,11 +93,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.2.1.Final</version>
 		</dependency>
 
 		<dependency>
